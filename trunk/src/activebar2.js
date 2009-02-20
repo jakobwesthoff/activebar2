@@ -14,6 +14,17 @@
  * along with Activebar2; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
+ * You may contact the author by mail: jakob@php.net
+ * 
+ * Or write to:
+ * Jakob Westhoff
+ * Kleiner Floraweg 35
+ * 44229 Dortmund
+ * Germany
+ *
+ * The latest version of ActiveBar can be obtained from:
+ * http://www.westhoffswelt.de/
+ *
  * @package Core
  * @version $Revision$
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
