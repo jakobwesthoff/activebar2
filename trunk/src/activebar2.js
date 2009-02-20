@@ -18,7 +18,7 @@
  * @version $Revision$
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
-(function() {
+(function($) {
     
     $.fn.activebar = function( options ) {
         // Merge the specified options with the default ones
@@ -260,4 +260,4 @@
         });                              
      };
 
-})();
+})(jquery);
