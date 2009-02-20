@@ -249,4 +249,4 @@ check out a copy of its SVN repository, which is publicly available at::
 
     $ svn co svn://pureenergy.cc/activebar2
 
-__ /data/activebar2/activebar-2.0.tar.gz
+__ /data/activebar2/activebar-2.0.1.tar.gz
