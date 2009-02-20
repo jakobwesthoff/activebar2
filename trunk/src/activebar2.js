@@ -29,6 +29,9 @@
             $.fn.activebar.container = initializeActivebar( options );
         }
 
+        // Update the style values according to the provided options
+        setOptionsOnContainer( $.fn.activebar.container, options );
+
         // If the activebar is currently visible hide it
         $.fn.activebar.hide();
         
@@ -51,7 +54,7 @@
                 }
             );
         }
-        
+
         // Update the position based on the new content data height
         $.fn.activebar.container.css( 'top', '-' + $.fn.activebar.container.height() + 'px' );
 
@@ -142,8 +145,6 @@
         // Set the needed css styles
         container.css({
             'display': 'none',
-            'background': options.background,
-            'borderBottom': '1px solid ' + options.border,
             'position': 'fixed',
             'zIndex': '9999',
             'top': '0px',
@@ -159,17 +160,6 @@
         // Set the initial bar width
         $(window).trigger( 'resize' );
         
-        // Register functions to change between normal and highlight background
-        // color on mouseover
-        container.hover( 
-            function() {
-                $(this).css( 'backgroundColor', options.highlight );
-            },
-            function() {
-                $(this).css( 'backgroundColor', options.background );
-            }
-        );
-
         // The IE prior to version 7.0 does not support position fixed. However
         // the correct behaviour can be emulated using a hook to the scroll
         // event. This is a little choppy, but it works.
@@ -201,8 +191,7 @@
                                 'float': 'left',
                                 'width': '16px',
                                 'height': '16px',
-                                'margin': '6px 4px 4px 4px',
-                                'background': 'transparent url( \'' + options.icon  + '\' ) top left no-repeat'
+                                'margin': '6px 4px 4px 4px'
                               })
         );
 
@@ -213,8 +202,7 @@
                                 'float': 'right',
                                 'margin': '6px 4px 4px 4px',
                                 'width': '16px',
-                                'height': '16px',
-                                'background': 'transparent url( \'' + options.button + '\' ) top left no-repeat'
+                                'height': '16px'
                               })
                               .click( 
                                 function(event) {
@@ -228,17 +216,48 @@
         container.append( 
             $( '<div></div>' ).attr( 'class', 'content' )
                               .css({
-                                'margin': '8px 28px 4px 28px',
-                                'color': options.fontColor,
-                                'fontFamily': options.font,
-                                'fontSize': options.fontSize
+                                'margin': '8px 28px 4px 28px'
                               })
         );
-
 
         $('body').prepend( container );
 
         return container;
+     };
+
+     /**
+      * Set the provided options on the given activebar container object
+      */
+     function setOptionsOnContainer( container, options ) {
+         container.css({
+            'background': options.background,
+            'borderBottom': '1px solid ' + options.border
+         });
+        
+        // Register functions to change between normal and highlight background
+        // color on mouseover
+        container.unbind( 'mouseenter mouseleave' );
+        container.hover( 
+            function() {
+                $(this).css( 'backgroundColor', options.highlight );
+            },
+            function() {
+                $(this).css( 'backgroundColor', options.background );
+            }
+        );
+
+        // Set the correct icon image
+        $( '.icon', container ).css( 'background', 'transparent url( \'' + options.icon  + '\' ) top left no-repeat' );
+
+        // Set the close button image
+        $( '.close', container ).css( 'background', 'transparent url( \'' + options.button + '\' ) top left no-repeat' );
+        
+        // Set the content font styles
+        $( '.content', container ).css({
+            'color': options.fontColor,
+            'fontFamily': options.font,
+            'fontSize': options.fontSize
+        });                              
      };
 
 })();
