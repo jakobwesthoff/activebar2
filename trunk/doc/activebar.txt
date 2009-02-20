@@ -205,6 +205,35 @@ Using this technique it is moreover easily possible to restrict the message
 even further by checking for browser versions for example. Take a look at the
 corresponding documentation to see how this can be done.
 
+
+Using together with other js libraries
+======================================
+
+Maybe you are already using other javascript libraries on your website like
+script.aculo.us__ or moo.fx__. In this case you do not want jQuery to
+conflict with the behaviour of the $ function already defined by this
+toolkits. Therefore jquery can be told to create `no conflict`__ after it
+is loaded. This is done by calling the function noConflict und using the
+jQuery for all calls to jQuery after that. Using a function closure you may
+even define the $ shortcut for a limited area of your website. Take a look at
+the example below::
+
+	<script type="text/javascript">
+		jQuery.noConflict();
+		jQuery(document).ready(function($) {
+			$('<div></div>').html('Your text goes here.')
+									.activebar({
+										'font': 'serif',
+										'icon': 'images/information.png',
+										'url': 'http://mozilla.org/firefox'
+									});
+		});
+	</script>
+
+__ http://script.aculo.us/
+__ http://moofx.mad4milk.net/
+__ http://docs.jquery.com/Using_jQuery_with_Other_Libraries
+
 Download
 ========
 
@@ -213,11 +242,11 @@ to download the package below which consists of current release as well as a
 bundled jquery javascript file and this documentation. Furthermore a simple
 usage example html file is included in the archive.
 
-- `Activebar 2.0`__
+- `Activebar 2.0.1`__
 
 If you are interested in the bleeding edge version of this widget you might
 check out a copy of its SVN repository, which is publicly available at::
 
     $ svn co svn://pureenergy.cc/activebar2
 
-__ /data/blog/activebar2/activebar-2.0.tar.gz
+__ /data/activebar2/activebar-2.0.tar.gz

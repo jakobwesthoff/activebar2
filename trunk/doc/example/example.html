@@ -9,7 +9,8 @@
 	<script type="text/javascript" src="../../libraries/jquery/jquery-1.3.2.js"></script>
 	<script type="text/javascript" src="../../src/activebar2.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function() {
+        jQuery.noConflict();
+		jQuery(document).ready(function($) {
             $('<div></div>').html('This page may not be displayed correctly in this browser. You are strongly encouraged to update to a current release of <a href="http://mozilla.org/firefox">Firefox</a>')
                             .activebar({
                                 'url': 'http://mozilla.org/firefox'
